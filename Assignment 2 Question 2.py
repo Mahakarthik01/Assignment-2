@@ -1,1 +1,0 @@
-print('Question 2 sample')
