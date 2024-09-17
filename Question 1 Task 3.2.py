@@ -30,3 +30,4 @@ top_30_tokens = count_unique_tokens(input_txt_file)
 # Print the result
 for token, count in top_30_tokens:
     print(f"{token}: {count}")
+
