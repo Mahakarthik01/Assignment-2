@@ -1,4 +1,3 @@
-# For Task 3.1
 import csv
 from collections import Counter
 
@@ -28,3 +27,4 @@ with open(output_csv_file, 'w', newline='', encoding='utf-8') as csvfile:
     writer.writerows(top_30_words)  # Writing the words and their counts
 
 print(f"Top 30 words written to {output_csv_file}")
+
