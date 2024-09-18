@@ -1,4 +1,12 @@
-# pip install pandas
+# python -m venv myenv
+# myenv\Scripts\activate
+# pip install spacy
+# pip install scispacy
+# pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.3.0/en_core_sci_sm-0.3.0.tar.gz
+# pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.3.0/en_ner_bc5cdr_md-0.3.0.tar.gz
+# pip install transformers
+# pip install torch
+# pip install pandas
 import pandas as pd
 
 # Paths to CSV files and their corresponding text columns
