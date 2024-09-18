@@ -1,3 +1,5 @@
+# python -m venv myenv
+# myenv\Scripts\activate
 # pip install pillow
 
 import time
@@ -13,7 +15,7 @@ if generated_number % 2 == 0:
 print(f"Generated Number: {generated_number}")
 
 # Step 2: Open the image
-image_path = r'C:\Users\mahak\OneDrive\Documents\chapter1.jpg'  # Use your extracted path
+image_path = r"C:\Users\shuva\OneDrive\Documents\chapter1.jpg"  # Use your extracted path
 img = Image.open(image_path)
 pixels = img.load()  # Load the pixel data
 

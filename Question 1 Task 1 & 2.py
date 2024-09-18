@@ -1,11 +1,12 @@
+# pip install pandas
 import pandas as pd
 
 # Paths to CSV files and their corresponding text columns
 csv_files = {
-    "C:/Users/mahak/OneDrive/Documents/CSV1.csv": "SHORT-TEXT",
-    "C:/Users/mahak/OneDrive/Documents/CSV2.csv": "TEXT",
-    "C:/Users/mahak/OneDrive/Documents/CSV3.csv": "TEXT",
-    "C:/Users/mahak/OneDrive/Documents/CSV4.csv": "TEXT"
+    "C:\\Users\\shuva\\OneDrive\\Documents\\CSV1.csv": "SHORT-TEXT",
+    "C:\\Users\\shuva\\OneDrive\\Documents\\CSV2.csv": "TEXT",
+    "C:\\Users\\shuva\\OneDrive\\Documents\\CSV3.csv": "TEXT",
+    "C:\\Users\\shuva\\OneDrive\\Documents\\CSV4.csv": "TEXT"
 }
 
 # Path for the output text file
