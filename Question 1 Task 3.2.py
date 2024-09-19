@@ -1,33 +1,38 @@
+# pip install trasnformers 
 from transformers import AutoTokenizer
 from collections import Counter
+import csv
 
-# Function to count unique tokens in text and return top 30
-def count_unique_tokens(text_file):
-    # Load pre-trained tokenizer (e.g., 'bert-base-uncased')
+# Function to tokenize the text and count unique tokens
+def count_unique_tokens(file_path, top_n=30):
+    # Load the AutoTokenizer from the 'bert-base-uncased' model (you can replace it with another model if needed)
     tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
-
+    
     # Read the text file
-    with open(text_file, 'r', encoding='utf-8') as file:
+    with open(file_path, 'r', encoding='utf-8') as file:
         text = file.read()
-
+    
     # Tokenize the text
     tokens = tokenizer.tokenize(text)
-
+    
     # Count occurrences of each token
     token_counts = Counter(tokens)
+    
+    # Get the top 'n' most common tokens
+    top_tokens = token_counts.most_common(top_n)
+    
+    # Save the top tokens and their counts into a CSV file
+    output_csv = 'top30_tokens.csv'
+    with open(output_csv, 'w', newline='', encoding='utf-8') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(['Token', 'Count'])
+        writer.writerows(top_tokens)
+    
+    print(f"Top {top_n} tokens saved in '{output_csv}'.")
 
-    # Get the top 30 most common tokens
-    top_30_tokens = token_counts.most_common(30)
+# Provide the path to your extracted_texts.txt file
+file_path = 'C:/Users/mahak/OneDrive/Desktop/HIT137/extracted_texts.txt'
 
-    return top_30_tokens
-
-# Path to the extracted text file
-input_txt_file = r'C:\Users\mahak\OneDrive\Desktop\HIT137\extracted_texts.txt'
-
-# Get the top 30 unique tokens
-top_30_tokens = count_unique_tokens(input_txt_file)
-
-# Print the result
-for token, count in top_30_tokens:
-    print(f"{token}: {count}")
+# Call the function to count tokens and store the top 30
+count_unique_tokens(file_path)
 
