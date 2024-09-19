@@ -1,3 +1,5 @@
+# install transformers
+# make sure the virtual environment is activated.
 
 from transformers import AutoTokenizer
 from collections import Counter
@@ -39,4 +41,7 @@ file_path = 'C:/Users/mahak/OneDrive/Desktop/HIT137/extracted_texts.txt'
 
 # Call the function to count tokens and store the top 30
 count_unique_tokens(file_path)
+
+# if the run button does not work please copy paste the code below in the terminal 
+# python "c:/Users/mahak/OneDrive/Desktop/HIT137/Assignment-2/Question 1 Task 3.2.py"
 
