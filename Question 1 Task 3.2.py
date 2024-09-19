@@ -1,26 +1,30 @@
-# pip install trasnformers 
+
 from transformers import AutoTokenizer
 from collections import Counter
 import csv
 
-# Function to tokenize the text and count unique tokens
-def count_unique_tokens(file_path, top_n=30):
-    # Load the AutoTokenizer from the 'bert-base-uncased' model (you can replace it with another model if needed)
-    tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
-    
-    # Read the text file
+# Function to tokenize the text and count unique tokens in chunks to avoid memory issues
+def count_unique_tokens(file_path, top_n=30, chunk_size=1024):  # Process text in 1KB chunks
+    tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased', use_fast=True)
+    token_counts = Counter()
+
+    # Read the text file in chunks
     with open(file_path, 'r', encoding='utf-8') as file:
-        text = file.read()
-    
-    # Tokenize the text
-    tokens = tokenizer.tokenize(text)
-    
-    # Count occurrences of each token
-    token_counts = Counter(tokens)
-    
+        while True:
+            # Read a chunk of text
+            chunk = file.read(chunk_size)
+            if not chunk:
+                break
+            
+            # Tokenize the chunk (removed the deprecated argument)
+            tokens = tokenizer.tokenize(chunk)
+            
+            # Update token counts
+            token_counts.update(tokens)
+
     # Get the top 'n' most common tokens
     top_tokens = token_counts.most_common(top_n)
-    
+
     # Save the top tokens and their counts into a CSV file
     output_csv = 'top30_tokens.csv'
     with open(output_csv, 'w', newline='', encoding='utf-8') as csvfile:
